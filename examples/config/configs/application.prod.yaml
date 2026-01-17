@@ -1,0 +1,30 @@
+debug_mode: false
+
+logger:
+  console: false
+  level: info
+
+web:
+  host: 0.0.0.0
+  port: 8080
+
+db:
+  primary:
+    host: prod-db.example.com
+    port: 3306
+    user: prod_user
+    password: prod-password
+    name: prod_database
+    max_idle: 20
+    max_open: 200
+
+redis:
+  host: prod-redis.example.com
+  port: 6379
+  password: prod-redis-password
+  db: 0
+
+app:
+  feature_flags:
+    enable_new_ui: false
+    enable_analytics: true
