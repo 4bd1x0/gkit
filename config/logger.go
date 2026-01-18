@@ -38,7 +38,7 @@ func createLogger() *LoggerInstance {
 	minLevel := parseLogLevel(cfg.Level)
 
 	// Get the path from config file
-	logsDir := GetLogsDir(cfg.Path)
+	logsDir := GetLogsDir()
 
 	// File encoder: no color
 	fileEncoderConfig := zap.NewProductionEncoderConfig()
@@ -161,7 +161,8 @@ const (
 
 // GetLogsDir gets the log directory path
 // Priority: 1. Environment variable GO_LOG_DIR > 2. logger.path in config file > 3. logs in current directory
-func GetLogsDir(pathFromConfig string) string {
+func GetLogsDir() string {
+	pathFromConfig := config.Logger.Path
 	// 1. Priority: use log directory specified by environment variable
 	if logsDir := os.Getenv(EnvLogDir); logsDir != "" {
 		if err := os.MkdirAll(logsDir, 0755); err != nil {
