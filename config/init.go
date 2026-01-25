@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-func init() {
+func Init() {
 	configDir, err := findConfigsDir()
 	if err != nil {
 		panic(fmt.Sprintf("failed to find config directory: %s", err))
